@@ -10,4 +10,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
 
   has_many :posts, dependent: :destroy
+
+  def mine?(post)
+    post.user_id == self.id
+  end
 end

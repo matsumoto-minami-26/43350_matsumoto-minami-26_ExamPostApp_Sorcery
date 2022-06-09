@@ -15,11 +15,13 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1/edit
-  def edit; end
+  def edit
+    current_user.posts.find(params[:id])
+  end
 
   # POST /posts
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
 
     if @post.save
       redirect_to @post, notice: 'Post was successfully created.'
@@ -30,6 +32,7 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1
   def update
+    current_user.posts.find(params[:id])
     if @post.update(post_params)
       redirect_to @post, notice: 'Post was successfully updated.'
     else
@@ -39,6 +42,7 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1
   def destroy
+    current_user.posts.find(params[:id])
     @post.destroy
     redirect_to posts_url, notice: 'Post was successfully destroyed.'
   end
