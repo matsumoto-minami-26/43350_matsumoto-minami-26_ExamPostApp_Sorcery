@@ -19,7 +19,6 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    super
     @user = User.new(user_params)
 
     if @user.save
