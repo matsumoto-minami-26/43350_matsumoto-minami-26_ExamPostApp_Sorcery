@@ -34,11 +34,11 @@ gem 'coffee-rails', '~> 4.2'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'bootstrap', '~> 4.5.0'
-gem 'font-awesome-sass', '~> 5.11.2'
+gem 'bootstrap', '~> 4.6'
+gem 'font-awesome-sass', '~> 5.15.1'
 gem 'sassc', '2.1.0'
 gem 'jquery-rails'
-gem 'sorcery', '0.15.0'
+gem 'sorcery', '~> 0.14.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
