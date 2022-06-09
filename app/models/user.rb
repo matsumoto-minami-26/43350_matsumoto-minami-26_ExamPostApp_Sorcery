@@ -12,6 +12,6 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   def mine?(post)
-    post.user_id == self.id
+    post.user_id # == self.id
   end
 end
