@@ -4,11 +4,11 @@
         <h1>Login</h1>
         <%= form_with model: @user, url: login_path, local: true do |f| %>
         <div class="form-group">
-            <%= f.label :Email %>
+            <%= f.label :email %>
             <%= f.email_field :email, class: "form-control"  %>
         </div>
         <div class="form-group">
-            <%= f.label :Password %>
+            <%= f.label :password %>
             <%= f.password_field :password, class: "form-control"  %>
         </div>
         

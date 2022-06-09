@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    super
     @users = User.all
   end
 
@@ -12,7 +11,6 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    super
     @user = User.new
   end
 
