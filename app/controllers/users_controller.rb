@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:index, :new, :create] # this should only be used if you are allowing users to register themselves.
+  skip_before_action :require_login, only: %i[:index, :new, :create] # this should only be used if you are allowing users to register themselves.
 
   # GET /users
   def index
@@ -16,8 +16,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /users
   def create
@@ -46,13 +45,14 @@ class UsersController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
     # Only allow a trusted parameter "white list" through.
-    def user_params
-      params.require(:user).permit(:last_name, :first_name, :email, :password, :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:last_name, :first_name, :email, :password, :password_confirmation)
+  end
 end
