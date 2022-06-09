@@ -42,5 +42,7 @@ module PostAppSorcery
       request_specs: false
       g.fixture_replacement :factory_bot, dir: "spec/factories"
     end
+    config.i18n.default_locale = :ja
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/**/*.{rb,yml}').to_s]
   end
 end
