@@ -4,7 +4,6 @@ class UserSessionsController < ApplicationController
   def new; end
 
   def create
-    super
     @user = login(params[:email], params[:password])
 
     if @user
