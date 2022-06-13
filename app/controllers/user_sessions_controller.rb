@@ -7,10 +7,10 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
 
     if @user
-      redirect_to posts_path, success: t('.success')
+      redirect_back_or_to boards_path, success: t('.success')
     else
       flash.now[:danger] = t('.fail')
-      render action: 'new'
+      render :new
     end
   end
 

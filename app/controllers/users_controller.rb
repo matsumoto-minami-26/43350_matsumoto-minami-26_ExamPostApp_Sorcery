@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: %i[index new create] # this should only be used if you are allowing users to register themselves.
+  skip_before_action :require_login, only: %i[new create] # this should only be used if you are allowing users to register themselves.
 
   # GET /users
   def index

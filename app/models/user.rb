@@ -9,9 +9,12 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { maximum: 255 }
   validates :email, uniqueness: true, presence: true
 
-  has_many :posts, dependent: :destroy
+  has_many :boards, dependent: :destroy
 
-  def mine?(post)
-    post.user_id == post.id
-  end
+  # def mine?(post)
+    # post.user_id == post.id
+  # end
+    def mine?(board)
+      board.user_id == board.id
+    end
 end
