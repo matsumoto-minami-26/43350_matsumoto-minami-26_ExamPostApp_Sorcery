@@ -1,9 +1,13 @@
 class BoardsController < ApplicationController
+  before_action :set_board, only: %i[show edit update destroy]
+
   def index
     @boards = Board.all.includes(:user).order(created_at: :desc)
   end
   
-  def show; end
+  def show
+    @board = Board.find(params[:id])
+  end
 
   def new
     @board = Board.new
@@ -15,17 +19,17 @@ class BoardsController < ApplicationController
   
   def create
     @board = current_user.boards.new(board_params)
-  
-    if @post.save
-      redirect_to @board, notice: 'Post was successfully created.'
+    if @board.save
+      redirect_to boards_path, success: t('defaults.message.created', item: Board.model_name.human)
     else
+      flash.now['danger'] = t('defaults.message.not_created', item: Board.model_name.human)
       render :new
     end
   end
   
   def update
-    current_user.boards.find(params[:id])
-    if @post.update(board_params)
+    @board = current_user.boards.new(board_params)
+    if @board.update(board_params)
       redirect_to @board, notice: 'Post was successfully updated.'
     else
       render :edit
@@ -33,18 +37,18 @@ class BoardsController < ApplicationController
   end
   
   def destroy
-    current_user.boards.find(params[:id])
+    @board = current_user.boards.new(board_params)
     @board.destroy
     redirect_to boards_url, notice: 'Post was successfully destroyed.'
   end
   
   private
   
-  def set_post
+  def set_board
     @board = Board.find(params[:id])
   end
   
   def board_params
-    params.require(:board).permit(:title, :content)
+    params.require(:board).permit(:title, :body)
   end
 end
