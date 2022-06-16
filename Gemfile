@@ -42,6 +42,7 @@ gem 'sorcery', '~> 0.14.0'
 gem 'rails-i18n', '5.1.3'
 gem 'draper'
 gem 'carrierwave', '~> 2.0'
+gem "mini_magick"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
