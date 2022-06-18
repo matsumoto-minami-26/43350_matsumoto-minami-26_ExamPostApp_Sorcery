@@ -4,6 +4,7 @@ ja:
     register: '登録'
     logout: 'ログアウト'
     back: '戻る'
+    post: '投稿'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を作成しました"
@@ -33,6 +34,8 @@ ja:
       title: '掲示板作成'
     bookmarks:
       title: 'ブックマーク一覧'
+    show:
+      title: '掲示板詳細'
   profiles:
     show:
       title: 'プロフィール'
