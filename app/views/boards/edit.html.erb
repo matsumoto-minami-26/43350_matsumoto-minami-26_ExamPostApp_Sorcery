@@ -1,6 +1,9 @@
-<h1>Editing Board</h1>
-
-<%= render 'form', board: @board %>
-
-<%= link_to 'Show', @board %> |
-<%= link_to 'Back', boards_path %>
+<% content_for(:title, @board.title) %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <h1><%= t('.title') %></h1>
+      <%= render 'form', { board: @board } %>
+    </div>
+  </div>
+</div>
