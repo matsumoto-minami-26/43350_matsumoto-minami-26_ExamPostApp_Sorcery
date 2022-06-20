@@ -16,6 +16,6 @@ class User < ApplicationRecord
     # post.user_id == post.id
   # end
     def mine?(board)
-      board.user_id == board.id
+      board.user_id == self.id
     end
 end

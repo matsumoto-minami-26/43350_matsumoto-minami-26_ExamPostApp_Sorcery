@@ -15,10 +15,6 @@ class BoardsController < ApplicationController
     @board = Board.new
   end
   
-  def edit;
-    @board = current_user.boards.find(params[:id])
-  end
-  
   def create
     @board = current_user.boards.new(board_params)
     if @board.save
@@ -27,6 +23,10 @@ class BoardsController < ApplicationController
       flash.now[:danger] = t('defaults.message.not_created', item: Board.model_name.human)
       render :new
     end
+  end
+  
+  def edit
+    @board = current_user.boards.find(params[:id])
   end
   
   def update
