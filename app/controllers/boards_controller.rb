@@ -28,7 +28,7 @@ class BoardsController < ApplicationController
       render :new
     end
   end
-  
+
   def update
     @board = current_user.boards.find(params[:id])
     if @board.update(board_params)
@@ -43,6 +43,11 @@ class BoardsController < ApplicationController
     @board = current_user.boards.find(params[:id])
     @board.destroy!
     redirect_to boards_path, success: t('defaults.message.deleted', item: Board.model_name.human)
+  end
+
+  def bookmarks
+    # binding.pry
+    @bookmark_boards = current_user.bookmark_boards.includes(:user).order(created_at: :desc)
   end
   
   private

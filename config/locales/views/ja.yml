@@ -38,10 +38,16 @@ ja:
       title: '掲示板作成'
     bookmarks:
       title: 'ブックマーク一覧'
+      no_result: 'ブックマーク中の掲示板がありません。'
     show:
       title: '掲示板詳細'
     edit:
       title: '掲示板編集'
+  bookmarks:
+    create:
+      success: 'ブックマークしました'
+    destroy:
+      success: 'ブックマークを外しました'
   profiles:
     show:
       title: 'プロフィール'
