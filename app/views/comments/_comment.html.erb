@@ -1,3 +1,4 @@
+<!-- コメントエリア -->
 <tr id="comment-<%= comment.id %>">
   <td style="width: 60px">
     <%= image_tag 'sample.jpg', class: 'rounded-circle', size: '50x50' %>
@@ -23,8 +24,13 @@
           </a>
         </li>
         <li class="list-inline-item">
-          <a href="#" class='js-delete-comment-button' data-comment-id="<%= comment.id %>">
+          <%= link_to comment_path(comment), 
+              class: 'js-delete-comment-button', 
+              data: {confirm: t('defaults.message.delete_confirm')},
+              method: :delete,
+              remote: true do %>
             <%= icon 'fas', 'trash' %>
+          <%end%>
           </a>
         </li>
       </ul>
