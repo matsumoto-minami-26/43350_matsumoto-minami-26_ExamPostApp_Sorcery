@@ -1,5 +1,10 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
+  
+  has_many :boards, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_boards, through: :bookmarks, source: :board
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
@@ -9,12 +14,22 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { maximum: 255 }
   validates :email, uniqueness: true, presence: true
 
-  has_many :boards, dependent: :destroy
-
   # def mine?(post)
     # post.user_id == post.id
   # end
     def mine?(board)
-      board.user_id == board.id
+      board.user_id == self.id
+    end
+
+    def bookmark(board)
+      bookmark_boards << board
+    end
+
+    def unbookmark(board)
+      bookmark_boards.destroy(board)
+    end
+
+    def bookmark?(board)
+      bookmark_boards.include?(board)
     end
 end
