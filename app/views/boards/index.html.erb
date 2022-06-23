@@ -24,6 +24,8 @@
             <p><%= t('.no_result') %></p>
           <% end %>
       </div>
+      <!-- ページネーション -->
+      <%= paginate @boards, theme: 'twitter-bootstrap-4' %>
     </div>
   </div>
 </div>
