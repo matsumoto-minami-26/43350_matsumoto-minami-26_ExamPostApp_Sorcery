@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :boards do
     resources :comments, only: %i[create update destroy], shallow: true
     collection do
+      get 'search'
       get :bookmarks
     end
   end
