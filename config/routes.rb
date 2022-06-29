@@ -21,9 +21,12 @@ Rails.application.routes.draw do
   resources :password_resets, only: %i[new create edit update]
 
   namespace :admin do
-    root to: 'dashboards#index'
+    root to: 'dashboards#index', :as => :root
     get 'login', to: 'user_sessions#new'
     post 'login', to: 'user_sessions#create'
     delete 'logout', to: 'user_sessions#destroy'
+
+    resources :users, only: %i[index show edit update destroy]
+    resources :boards, only: %i[index show edit update destroy]
   end
 end

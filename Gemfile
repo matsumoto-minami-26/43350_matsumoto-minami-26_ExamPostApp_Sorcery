@@ -43,10 +43,11 @@ gem 'rails-i18n', '5.1.3'
 gem 'draper'
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
-gem 'kaminari'
+gem 'kaminari', '1.1.1'
 gem 'bootstrap4-kaminari-views'
 gem 'ransack'
 gem 'config', '2.0.0'
+gem 'enum_help', '0.0.17'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
